@@ -1,5 +1,6 @@
 % https://www.hacklily.org 
 % https://github.dev/matthiasbirkich/sheet-music
+% workflow zur Renderung eines pdfs aus *.ly Dateien hinzugefügt als Lilipond-pdf.yml
 \version "2.18.2"
 
 \header {
