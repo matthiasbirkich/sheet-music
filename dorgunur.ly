@@ -2,86 +2,143 @@
 
 \header {
   title = "Dorgunur – Die vier Gebirge"
-  subtitle = "Obertonübung – notiert in C, wahlweise klingend auf Fis"
+  subtitle = "Obertonmelodie über Bordun C – 11/4-Takt"
   composer = "traditionell, Altai"
   arranger = "Workshop-Fassung"
+  tagline = ##f
 }
 
-global = {
-  \time 4/4
-  \tempo 4 = 72
-}
+% ---------------------------------------------------------
+% Mikrotonale Notenerzeugung
+%
+% dur-log:
+% 2 = Viertelnote
+% 1 = Halbe Note
+%
+% cents / 200:
+% LilyPond verwendet Ganztonschritte als Alterationseinheit.
+% ---------------------------------------------------------
 
-% Arbeitsfassung nach der fotografierten Vorlage
-melodyC = \relative c' {
-  \global
-  \clef treble
+#(define (microNote oct step cents dur-log)
+   (make-music
+    'EventChord
+    'elements
+    (list
+     (make-music
+      'NoteEvent
+      'duration (ly:make-duration dur-log 0)
+      'pitch (ly:make-pitch oct step (/ cents 200))))))
+
+melodyMicro = {
+  \clef "treble^8"
+  \time 11/4
+  \tempo 4 = 66
 
   \repeat volta 2 {
-    c4 f2 g4 |
-    a2 c4 g2 |
-    e2 g4 a2 |
-    f4 e2 f4 |
-    g2 c,1 |
+
+    % Takt 1
+    % G – C – D – E – G – D – C
+
+    #(microNote 1 4   2 2)   % G5,  Teilton 6,  Viertel
+    #(microNote 2 0   0 1)   % C6,  Teilton 8,  Halbe
+    #(microNote 2 1   4 2)   % D6,  Teilton 9,  Viertel
+    #(microNote 2 2 -14 1)   % E6,  Teilton 10, Halbe
+    #(microNote 2 4   2 2)   % G6,  Teilton 12, Viertel
+    #(microNote 2 1   4 1)   % D6,  Teilton 9,  Halbe
+    #(microNote 2 0   0 1)   % C6,  Teilton 8,  Halbe
+    |
+
+    % Takt 2
+    % E – G – D – C – D – E – G
+
+    #(microNote 2 2 -14 2)   % E6,  Teilton 10, Viertel
+    #(microNote 2 4   2 1)   % G6,  Teilton 12, Halbe
+    #(microNote 2 1   4 2)   % D6,  Teilton 9,  Viertel
+    #(microNote 2 0   0 1)   % C6,  Teilton 8,  Halbe
+    #(microNote 2 1   4 2)   % D6,  Teilton 9,  Viertel
+    #(microNote 2 2 -14 1)   % E6,  Teilton 10, Halbe
+    #(microNote 1 4   2 1)   % G5,  Teilton 6,  Halbe
+    |
   }
 }
 
-% Übungstext 1: neutrale Klangsilben
-vowelsOne = \lyricmode {
-  O __ A O
-  U __ O __
-  A __ E A
-  O E __ O
-  U __ __
+partialNumbers = \lyricmode {
+  "6" "8" "9" "10" "12" "9" "8"
+  "10" "12" "9" "8" "9" "10" "6"
 }
 
-% Übungstext 2: Bewegungsrichtungen statt IPA
-% H = hinten/dunkel, M = mittig, V = vorn/hell
-movementText = \lyricmode {
-  "eng-hinten" __ "öffnen" "vor"
-  "rund" __ "mittig" __
-  "öffnen" __ "hell" "vor"
-  "zurück" "mittig" __ "hell"
-  "rund" __ __
+overtoneNumbers = \lyricmode {
+  "OT 5" "OT 7" "OT 8" "OT 9" "OT 11" "OT 8" "OT 7"
+  "OT 9" "OT 11" "OT 8" "OT 7" "OT 8" "OT 9" "OT 5"
 }
 
-% C-Bordun, passend zur notierten Fassung
-droneC = \relative c {
-  \global
+centValues = \lyricmode {
+  "+2c" "0c" "+4c" "-14c" "+2c" "+4c" "0c"
+  "-14c" "+2c" "+4c" "0c" "+4c" "-14c" "+2c"
+}
+
+vowelExercise = \lyricmode {
+  "O" "O→A" "A" "A→Ö" "Ö→E" "A" "O"
+  "A→Ö" "Ö→E" "A" "O" "A" "A→Ö" "O"
+}
+
+% Bordun C:
+% Jeder 11/4-Takt besteht hier aus
+% 4/4 + 4/4 + 3/4 = 11/4.
+
+droneC = \absolute {
   \clef bass
+  \time 11/4
+
   \repeat volta 2 {
-    c1 |
-    c |
-    c |
-    c |
-    c |
+    c1~ c1~ c2. |
+    c1~ c1~ c2. |
   }
 }
 
 \score {
   \new StaffGroup <<
+
     \new Staff \with {
-      instrumentName = "Melodie"
+      instrumentName = "Obertöne"
       midiInstrument = "flute"
-      midiMinimumVolume = #0.75
-      midiMaximumVolume = #1.0
+      midiMinimumVolume = #0.80
+      midiMaximumVolume = #1.00
     } <<
-      \new Voice = "dorgunur" { \melodyC }
+      \new Voice = "melody" {
+        \melodyMicro
+      }
     >>
 
-    \new Lyrics \lyricsto "dorgunur" { \vowelsOne }
-    \new Lyrics \lyricsto "dorgunur" { \movementText }
+    \new Lyrics \lyricsto "melody" {
+      \vowelExercise
+    }
+
+    \new Lyrics \lyricsto "melody" {
+      \partialNumbers
+    }
+
+    \new Lyrics \lyricsto "melody" {
+      \overtoneNumbers
+    }
+
+    \new Lyrics \lyricsto "melody" {
+      \centValues
+    }
 
     \new Staff \with {
-      instrumentName = "Bordun"
+      instrumentName = "Bordun C"
       midiInstrument = "voice oohs"
-      midiMinimumVolume = #0.25
-      midiMaximumVolume = #0.45
+      midiMinimumVolume = #0.20
+      midiMaximumVolume = #0.40
     } {
       \droneC
     }
   >>
 
-  \layout { }
+  \layout {
+    indent = 22\mm
+  }
+
   \midi { }
-}undefined
+}
