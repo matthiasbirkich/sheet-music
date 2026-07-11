@@ -3,7 +3,7 @@
 \header {
   title = "Tintinnabuli"
   subtitle = "Vokal- und Resonanzfassung"
-  composer = "Freier Tintinnabulistil nach Arvo Pärt"
+  composer = "Tintinnabulistil nach Arvo Pärt"
   tagline = ##f
 }
 
