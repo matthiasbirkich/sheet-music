@@ -67,11 +67,6 @@ partialNumbers = \lyricmode {
   "10" "12" "9" "8" "9" "10" "6"
 }
 
-overtoneNumbers = \lyricmode {
-  "OT 5" "OT 7" "OT 8" "OT 9" "OT 11" "OT 8" "OT 7"
-  "OT 9" "OT 11" "OT 8" "OT 7" "OT 8" "OT 9" "OT 5"
-}
-
 centValues = \lyricmode {
   "+2c" "0c" "+4c" "-14c" "+2c" "+4c" "0c"
   "-14c" "+2c" "+4c" "0c" "+4c" "-14c" "+2c"
@@ -116,10 +111,6 @@ droneC = \absolute {
 
     \new Lyrics \lyricsto "melody" {
       \partialNumbers
-    }
-
-    \new Lyrics \lyricsto "melody" {
-      \overtoneNumbers
     }
 
     \new Lyrics \lyricsto "melody" {
