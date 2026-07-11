@@ -202,7 +202,7 @@ pianoLH = \relative c {
     >>
 
     \new PianoStaff \with {
-      instrumentName = "Klavier"
+      instrumentName = "Bordun"
     } <<
       \new Staff {
         \clef treble
