@@ -2,32 +2,41 @@
 
 \header {
   title = "Dorgunur – Die vier Gebirge"
-  subtitle = "Obertonmelodie über Bordun C – 11/4-Takt"
+  subtitle = "Workshop-Fassung über Bordun C · 11/4"
   composer = "traditionell, Altai"
-  arranger = "Workshop Spiekeroog"
+  arranger = "Workshop-Fassung"
   tagline = ##f
 }
 
 % ---------------------------------------------------------
-% Mikrotonale Notenerzeugung
+% Mikrotonale Note mit Teiltonnummer über der Note
 %
-% dur-log:
-% 2 = Viertelnote
-% 1 = Halbe Note
-%
-% cents / 200:
-% LilyPond verwendet Ganztonschritte als Alterationseinheit.
+% oct      = LilyPond-Oktavlage
+% step     = Tonstufe: C=0 D=1 E=2 F=3 G=4 A=5 H=6
+% cents    = Cent-Abweichung
+% dur-log  = 2 Viertel, 1 Halbe
+% partial  = Teiltonnummer
 % ---------------------------------------------------------
 
-#(define (microNote oct step cents dur-log)
+#(define (microPartialNote oct step cents dur-log partial)
    (make-music
     'EventChord
     'elements
     (list
+
      (make-music
       'NoteEvent
       'duration (ly:make-duration dur-log 0)
-      'pitch (ly:make-pitch oct step (/ cents 200))))))
+      'pitch (ly:make-pitch oct step (/ cents 200)))
+
+     (make-music
+      'TextScriptEvent
+      'direction UP
+      'text
+      (markup
+       #:bold
+       #:fontsize 1
+       (number->string partial))))))
 
 melodyMicro = {
   \clef "treble^8"
@@ -36,50 +45,141 @@ melodyMicro = {
 
   \repeat volta 2 {
 
+    % -----------------------------------------------------
     % Takt 1
     % G – C – D – E – G – D – C
+    % TT 6 – 8 – 9 – 10 – 12 – 9 – 8
+    % -----------------------------------------------------
 
-    #(microNote 1 4   2 2)   % G5,  Teilton 6,  Viertel
-    #(microNote 2 0   0 1)   % C6,  Teilton 8,  Halbe
-    #(microNote 2 1   4 2)   % D6,  Teilton 9,  Viertel
-    #(microNote 2 2 -14 1)   % E6,  Teilton 10, Halbe
-    #(microNote 2 4   2 2)   % G6,  Teilton 12, Viertel
-    #(microNote 2 1   4 1)   % D6,  Teilton 9,  Halbe
-    #(microNote 2 0   0 1)   % C6,  Teilton 8,  Halbe
+    #(microPartialNote 1 4   2 2  6)
+    #(microPartialNote 2 0   0 1  8)
+    #(microPartialNote 2 1   4 2  9)
+    #(microPartialNote 2 2 -14 1 10)
+    #(microPartialNote 2 4   2 2 12)
+    #(microPartialNote 2 1   4 1  9)
+    #(microPartialNote 2 0   0 1  8)
+
     |
+    \break
 
+    % -----------------------------------------------------
     % Takt 2
     % E – G – D – C – D – E – G
+    % TT 10 – 12 – 9 – 8 – 9 – 10 – 6
+    % -----------------------------------------------------
 
-    #(microNote 2 2 -14 2)   % E6,  Teilton 10, Viertel
-    #(microNote 2 4   2 1)   % G6,  Teilton 12, Halbe
-    #(microNote 2 1   4 2)   % D6,  Teilton 9,  Viertel
-    #(microNote 2 0   0 1)   % C6,  Teilton 8,  Halbe
-    #(microNote 2 1   4 2)   % D6,  Teilton 9,  Viertel
-    #(microNote 2 2 -14 1)   % E6,  Teilton 10, Halbe
-    #(microNote 1 4   2 1)   % G5,  Teilton 6,  Halbe
+    #(microPartialNote 2 2 -14 2 10)
+    #(microPartialNote 2 4   2 1 12)
+    #(microPartialNote 2 1   4 2  9)
+    #(microPartialNote 2 0   0 1  8)
+    #(microPartialNote 2 1   4 2  9)
+    #(microPartialNote 2 2 -14 1 10)
+    #(microPartialNote 1 4   2 1  6)
+
     |
   }
 }
 
-partialNumbers = \lyricmode {
-  "6" "8" "9" "10" "12" "9" "8"
-  "10" "12" "9" "8" "9" "10" "6"
-}
+% ---------------------------------------------------------
+% Centwerte unter der Obertonstimme
+% ---------------------------------------------------------
 
 centValues = \lyricmode {
-  "+2c" "0c" "+4c" "-14c" "+2c" "+4c" "0c"
-  "-14c" "+2c" "+4c" "0c" "+4c" "-14c" "+2c"
+  "+2 c"
+  "0 c"
+  "+4 c"
+  "-14 c"
+  "+2 c"
+  "+4 c"
+  "0 c"
+
+  "-14 c"
+  "+2 c"
+  "+4 c"
+  "0 c"
+  "+4 c"
+  "-14 c"
+  "+2 c"
 }
 
-vowelExercise = \lyricmode {
-  "O" "O→A" "A" "A→Ö" "Ö→E" "A" "O"
-  "A→Ö" "Ö→E" "A" "O" "A" "A→Ö" "O"
+% ---------------------------------------------------------
+
+% Vokalfärbungen
+
+% ---------------------------------------------------------
+
+vowelColours = \lyricmode {
+
+  "O"
+
+  "O–A"
+
+  "A–Ö"
+
+  "Ö–E"
+
+  "E–I"
+
+  "A–Ö"
+
+  "O–A"
+
+  "Ö–E"
+
+  "E–I"
+
+  "A–Ö"
+
+  "O–A"
+
+  "A–Ö"
+
+  "Ö–E"
+
+  "O"
+
 }
 
-% Bordun C:
-% Jeder 11/4-Takt besteht hier aus
-% 4/4 + 4/4 + 3/4 = 11/4.
+% ---------------------------------------------------------
+
+% Bewegungssymbole
+
+% ---------------------------------------------------------
+
+vowelSymbols = \lyricmode {
+
+  "◕↘"
+
+  "◑→"
+
+  "◑↗"
+
+  "◔↗"
+
+  "○↑"
+
+  "◑↗"
+
+  "◑→"
+
+  "◔↗"
+
+  "○↑"
+
+  "◑↗"
+
+  "◑→"
+
+  "◑↗"
+
+  "◔↗"
+
+  "◕↘"
+}
+
+% ---------------------------------------------------------
+% Bordun C
+% ---------------------------------------------------------
 
 droneC = \absolute {
   \clef bass
@@ -91,45 +191,96 @@ droneC = \absolute {
   }
 }
 
+% ---------------------------------------------------------
+% Partitur
+% ---------------------------------------------------------
+
 \score {
+
   \new StaffGroup <<
 
     \new Staff \with {
-      instrumentName = "Obertöne"
+      instrumentName = "Oberton"
+
       midiInstrument = "flute"
       midiMinimumVolume = #0.80
       midiMaximumVolume = #1.00
     } <<
+
       \new Voice = "melody" {
         \melodyMicro
       }
+
     >>
 
-    \new Lyrics \lyricsto "melody" {
-      \vowelExercise
-    }
-
-    \new Lyrics \lyricsto "melody" {
-      \partialNumbers
-    }
+    % 1. Zeile unter den Noten:
+    % Cent-Abweichung
 
     \new Lyrics \lyricsto "melody" {
       \centValues
     }
 
+    % 2. Zeile unter den Noten:
+    % Vokalfärbung
+
+    \new Lyrics \lyricsto "melody" {
+      \vowelColours
+    }
+
+    % 3. Zeile unter den Noten:
+% Bewegungssymbole
+
+\new Lyrics \lyricsto "melody" {
+  \vowelSymbols
+}
+
     \new Staff \with {
       instrumentName = "Bordun C"
+
       midiInstrument = "voice oohs"
       midiMinimumVolume = #0.20
       midiMaximumVolume = #0.40
     } {
+
       \droneC
+
     }
+
   >>
 
   \layout {
-    indent = 22\mm
+
+  indent = 22\mm
+
+  \context {
+
+    \Score
+
+    \override TextScript.staff-padding = #2.0
+
+    \override SpacingSpanner.common-shortest-duration =
+
+      #(ly:make-moment 1/8)
+
   }
+
+  \context {
+
+    \Lyrics
+
+    \override VerticalAxisGroup.nonstaff-relatedstaff-spacing =
+
+      #'((basic-distance . 2.5)
+
+         (minimum-distance . 1.5)
+
+         (padding . 1.2)
+
+         (stretchability . 1))
+
+  }
+
+}
 
   \midi { }
 }
