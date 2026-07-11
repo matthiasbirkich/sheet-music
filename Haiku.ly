@@ -45,13 +45,13 @@ melody = \relative c'' {
   cis4^\markup { \bold "10" }
   d4^\markup   { \bold "11" }
 
-  \bar ""
+  \bar "|"
   \break
 
   fis4^\markup { \bold "13" }
   g2^\markup   { \bold "14" }
   e2^\markup   { \bold "12" }
-  cis4^\markup { \bold "10" }
+  cis!4^\markup { \bold "10" }
   d4^\markup   { \bold "11" }
   b2.^\markup  { \bold "9"  }
   g2^\markup   { \bold "7"  }
