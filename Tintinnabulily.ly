@@ -54,13 +54,13 @@ sopranoMusic = \relative c'' {
   c( b) |
   a |
   r1 |
-  g |
+  a |
   a( b) |
   c |
   b( a) |
-  g |
-  f |
-  e( d)\fermata
+  a |
+  a |
+  a( a)\fermata
 }
 
 % Tenor: notiert 8vb (treble_8) – deshalb eine Oktave höher schreiben,
@@ -105,7 +105,7 @@ tenorMusic = \relative c'{
   a2 c |
   e1 |
   c2 a |
-  e1 g|
+  e1 a|
   a1\fermata
 }
 
