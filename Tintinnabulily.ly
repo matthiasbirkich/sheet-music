@@ -6,7 +6,7 @@
 
 \header {
   title = "Tintinnabulily"
-  composer = "Für Alina (Chorfassung)"
+  composer = "Frei nach Arvo Pärt"
 }
 
 global = {
