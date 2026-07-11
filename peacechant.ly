@@ -16,7 +16,7 @@ global = {
 
 harmonies = \chordmode {
   b1:m | b1:m | b1:m | b1:m |
-  e1:m | fis1 | fis1 | b1:m |
+  e1:m | fis1 | b1:m |
 }
 
 melody = \relative c' {
@@ -26,12 +26,12 @@ melody = \relative c' {
   b2.\p cis8 a |
   b2. fis8 a |
   fis2. e8 d |
-  fis2. b8 fis |
+  fis2. b,8 fis' |
 
-  e4 fis8 d cis2 |
-  e8 e d4 cis8 cis b4 |
-  b1~ |
-  b1 \bar "|."
+  e4 fis8 d cis4~ cis4~ |
+  cis4 e8 e d4 cis8 cis |
+  b4~ |
+  b2. \bar "|."
 }
 
 text = \lyricmode {
@@ -39,7 +39,7 @@ text = \lyricmode {
   e __ e -- e
   e __ e -- e
   e __ o -- o
-  o o -- o o
+  o o -- o o __
   Ya sa -- lam a dun -- ya
   __
 }
