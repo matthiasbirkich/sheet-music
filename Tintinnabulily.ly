@@ -6,7 +6,7 @@
 
 \header {
   title = "Tintinnabulily"
-  composer = "Modifiziertes Für Alina"
+  composer = "Für Alina (Chorfassung)"
 }
 
 global = {
@@ -15,7 +15,7 @@ global = {
   \tempo 4=65
 }
 
-harmonies = \chordmode {
+ harmonies = \chordmode {
   a1:m | a1:m | f1 | a1:m |
   c1 | a1:m | g1 | a1:m |
   f1 | a1:m | c1 | g1 |
@@ -26,7 +26,7 @@ harmonies = \chordmode {
   a1:m | f1 | c1 | g1 |
   a1:m | d1:m | f1 | a1:m |
   c1 | g1 | e1:7sus4 | a1:m
-}
+ }
 
 sopranoMusic = \relative c'' {
   \global
