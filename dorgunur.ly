@@ -2,9 +2,9 @@
 
 \header {
   title = "Dorgunur – Die vier Gebirge"
-  subtitle = "Workshop-Fassung über Bordun C · 11/4"
+  subtitle = "Flötenmelodie über Bordunton C · 11/4"
   composer = "traditionell, Altai"
-  arranger = "Workshop-Fassung"
+  arranger = "Workshop Siekeroog"
   tagline = ##f
 }
 
