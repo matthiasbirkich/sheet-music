@@ -6,7 +6,7 @@
 
 \header {
   title = "Tintinnabulily"
-  composer = "ChatGPT"
+  composer = "Modifiziertes Für Alina"
 }
 
 global = {
