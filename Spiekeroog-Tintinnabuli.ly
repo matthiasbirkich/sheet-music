@@ -1,7 +1,7 @@
 \version "2.22.2"
 
 \header {
-  title = "Tintinnabulily"
+  title = "Tintinnabuli"
   subtitle = "Vokal- und Resonanzfassung"
   composer = "freier Tintinnabulistil nach Arvo Pärt"
   tagline = ##f
