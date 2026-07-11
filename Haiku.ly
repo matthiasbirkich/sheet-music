@@ -2,9 +2,9 @@
 
 \header {
   title = "Haiku"
-  subtitle = "Resonanzmelodie über Bordun A = 110 Hz · freie archaische Form"
+  subtitle = "Resonanzmelodie - Bordun A = 110 Hz · Naturtonreihe vs 12-TET"
   composer = "Werner Rizzi"
-  arranger = "Resonanzton-Fassung"
+  arranger = "Vokalise"
   tagline = ##f
 }
 
@@ -13,26 +13,37 @@ global = {
   \tempo 4 = 66
 }
 
-% Finale Resonanztonfolge:
+% ---------------------------------------------------------
+% Resonanztonfolge:
 % 8 – 12 – 16 – 14 – 12 – 11 – 12 – 10 – 11 –
 % 13 – 14 – 12 – 10 – 11 – 9 – 7 – 8
 %
-% Diese robuste Hacklily-Fassung verwendet normale Noten.
-% Die Naturtonabweichungen stehen in der Cent-Zeile.
+% WICHTIG:
+% Die Resonanztonnummer ist die primaere Information.
+% Die Centwerte vergleichen den exakten Naturton mit 12-TET.
+% Sie sind KEINE Aufforderung, den Ton vom Kehlkopf aus zu korrigieren.
+%
+% RT 10 wird harmonisch als Cis -14 c bezeichnet,
+% nicht als C +86 c.
+% RT 13 wird als Fis -59 c bezeichnet.
+%
+% Die MIDI-Wiedergabe bleibt in dieser robusten Hacklily-Fassung
+% gleichstufig temperiert. Gesungen wird aus der Resonanz des Borduns.
+% ---------------------------------------------------------
 
 melody = \relative c'' {
   \global
   \clef "treble^8"
 
-  a2^\markup  { \bold "8"  }
-  e'4^\markup { \bold "12" }
-  a4^\markup  { \bold "16" }
-  g2^\markup  { \bold "14" }
-  e2^\markup  { \bold "12" }
-  d2^\markup  { \bold "11" }
-  e4^\markup  { \bold "12" }
-  c4^\markup  { \bold "10" }
-  d4^\markup  { \bold "11" }
+  a2^\markup   { \bold "8"  }
+  e'4^\markup  { \bold "12" }
+  a4^\markup   { \bold "16" }
+  g2^\markup   { \bold "14" }
+  e2^\markup   { \bold "12" }
+  d2^\markup   { \bold "11" }
+  e4^\markup   { \bold "12" }
+  cis4^\markup { \bold "10" }
+  d4^\markup   { \bold "11" }
 
   \bar ""
   \break
@@ -40,7 +51,7 @@ melody = \relative c'' {
   fis4^\markup { \bold "13" }
   g2^\markup   { \bold "14" }
   e2^\markup   { \bold "12" }
-  c4^\markup   { \bold "10" }
+  cis4^\markup { \bold "10" }
   d4^\markup   { \bold "11" }
   b2.^\markup  { \bold "9"  }
   g2^\markup   { \bold "7"  }
@@ -50,8 +61,8 @@ melody = \relative c'' {
 }
 
 toneNames = \lyricmode {
-  "A5" "E6" "A6" "G↓6" "E6" "D↑6" "E6" "C↑6" "D↑6"
-  "Fis↓6" "G↓6" "E6" "C↑6" "D↑6" "H5" "G↓5" "A5"
+  "A5" "E6" "A6" "G↓6" "E6" "D↑6" "E6" "Cis↓6" "D↑6"
+  "Fis↓6" "G↓6" "E6" "Cis↓6" "D↑6" "H5" "G↓5" "A5"
 }
 
 vowels = \lyricmode {
@@ -65,11 +76,11 @@ symbols = \lyricmode {
 }
 
 centValues = \lyricmode {
-  "0 c" "+2 c" "0 c" "−31 c" "+2 c" "+51 c" "+2 c" "+86 c" "+51 c"
-  "−59 c" "−31 c" "+2 c" "+86 c" "+51 c" "+4 c" "−31 c" "0 c"
+  "0 c" "+2 c" "0 c" "−31 c" "+2 c" "+51 c" "+2 c" "−14 c" "+51 c"
+  "−59 c" "−31 c" "+2 c" "−14 c" "+51 c" "+4 c" "−31 c" "0 c"
 }
 
-% Gesamtdauer: 29 Viertelschläge
+% Gesamtdauer: 29 Viertelschlaege
 droneA = \relative c {
   \global
   \clef bass
