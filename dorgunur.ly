@@ -4,7 +4,7 @@
   title = "Dorgunur – Die vier Gebirge"
   subtitle = "Obertonmelodie über Bordun C – 11/4-Takt"
   composer = "traditionell, Altai"
-  arranger = "Workshop-Fassung"
+  arranger = "Workshop Spiekeroog"
   tagline = ##f
 }
 
