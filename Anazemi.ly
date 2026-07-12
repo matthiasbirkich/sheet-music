@@ -48,7 +48,7 @@ melody = \relative c' {
     >>
 
     \new Lyrics \lyricsto "melodyVoice" {
-      \lyricsU
+      \U
     }
   >>
 
