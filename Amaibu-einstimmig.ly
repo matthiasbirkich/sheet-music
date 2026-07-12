@@ -53,7 +53,7 @@ lyricsAmaibu = \lyricmode {
 \score {
   <<
     \new Staff \with {
-      instrumentName = "SATB"
+      instrumentName = "SSAATTBB"
       midiInstrument = "voice oohs"
     } <<
       \new Voice = "melodyVoice" {
